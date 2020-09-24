@@ -299,6 +299,24 @@ std::ostream& operator<<(std::ostream& out, const WorkTicket& ticket)
 
 std::istream& operator>>(std::istream& in, WorkTicket& ticket)
 {
+	in >> ticket.ticketNumber;
+	in.ignore();
+
+	in >> ticket.clientID;
+	in.ignore();
+
+	in >> ticket.ticketDay;
+	in.ignore();
+
+	in >> ticket.ticketMonth;
+	in.ignore();
+
+	in >> ticket.ticketYear;
+	in.ignore();
+
+	in >> ticket.issueDescription;
+
+	return in;
 }
 
 bool WorkTicket::operator==(const WorkTicket& other_ticket) const
