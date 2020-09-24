@@ -1,7 +1,6 @@
-#include "WorkTicket.h"
-
 #include <iostream>
-
+#include <sstream>
+#include "WorkTicket.h"
 #include "MyconsoleInput.h"
 //Constructor Definition
 WorkTicket::WorkTicket(int number, std::string id, int day, int month, int year, std::string description)
@@ -14,6 +13,14 @@ WorkTicket::WorkTicket(int number, std::string id, int day, int month, int year,
 	SetTicketYear(year);
 	SetIssueDescription(description);
 }
+
+//Copy constructor
+WorkTicket::WorkTicket(const WorkTicket& ticket2)
+{
+	SetWorkTicket(ticket2.GetTicketNumber(), ticket2.GetClientID(), ticket2.GetTicketDay(), 
+		ticket2.GetTicketMonth(), ticket2.GetTicketYear(), ticket2.GetIssueDescription());
+}
+
 
 //Accessor to display the work ticket to the user
 void WorkTicket::ShowWorkTicket() const
@@ -54,6 +61,8 @@ bool WorkTicket::SetWorkTicket(int number, std::string id, int day, int month, i
 
 	return returnValue;
 }
+
+
 
 //Mutator function - Sets the ticket number
 void WorkTicket::SetTicketNumber(int number)
@@ -281,4 +290,28 @@ int WorkTicket::GetTicketYear()
 std::string WorkTicket::GetIssueDescription()
 {
 	return issueDescription;
+}
+
+std::ostream& operator<<(std::ostream& out, const WorkTicket& ticket)
+{
+	
+}
+
+std::istream& operator>>(std::istream& in, WorkTicket& ticket)
+{
+}
+
+bool WorkTicket::operator==(const WorkTicket& other_ticket) const
+{
+
+}
+
+WorkTicket WorkTicket::operator=(const WorkTicket& new_ticket)
+{
+	SetTicketNumber(new_ticket.GetTicketNumber());
+	SetClientID(new_ticket.GetClientID());
+	SetTicketDay(new_ticket.GetTicketDay());
+	SetTicketMonth(new_ticket.GetTicketMonth());
+	SetTicketYear(new_ticket.GetTicketYear());
+	SetIssueDescription(new_ticket.GetIssueDescription());
 }
