@@ -19,6 +19,7 @@ int main()
 	//Array declaration for WorkTicket class
 	WorkTicket workTicketArr[3];
 
+	std::cout << "\nA WorkTicket object has been copied.";
 	//Endline
 	std::cout << std::endl;
 

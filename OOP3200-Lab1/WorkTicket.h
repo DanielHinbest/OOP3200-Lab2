@@ -27,7 +27,8 @@ public:
 	WorkTicket(const WorkTicket& ticket2);
 
 	//Conversion operator
-
+	operator std::string();
+	
 	//Operator overloads
 	bool operator==(const WorkTicket& other_ticket) const;
 	WorkTicket operator=(const WorkTicket& new_ticket);

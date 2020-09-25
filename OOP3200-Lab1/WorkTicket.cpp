@@ -21,6 +21,15 @@ WorkTicket::WorkTicket(const WorkTicket& ticket2)
 		ticket2.GetTicketMonth(), ticket2.GetTicketYear(), ticket2.GetIssueDescription());
 }
 
+//conversion operator
+WorkTicket::operator std::string()
+{
+	std::stringstream convertedTicket;
+	convertedTicket << "Work Ticket # " << GetTicketNumber() << " - " << GetClientID() << " (" << GetTicketDay() <<
+		"/" << GetTicketMonth() << "/" << GetTicketYear() << "): " << GetIssueDescription();
+	return convertedTicket.str();
+}
+
 
 //Accessor to display the work ticket to the user
 void WorkTicket::ShowWorkTicket() const
@@ -61,8 +70,6 @@ bool WorkTicket::SetWorkTicket(int number, std::string id, int day, int month, i
 
 	return returnValue;
 }
-
-
 
 //Mutator function - Sets the ticket number
 void WorkTicket::SetTicketNumber(int number)
@@ -257,44 +264,45 @@ void WorkTicket::SetIssueDescription(std::string description)
 
 
 //Accessor method - returns the ticket number
-int WorkTicket::GetTicketNumber()
+int WorkTicket::GetTicketNumber() const
 {
 	return ticketNumber;
 }
 
 //Accessor method - returns the client ID
-std::string WorkTicket::GetClientID()
+std::string WorkTicket::GetClientID() const
 {
 	return clientID;
 }
 
 //Accessor method - returns the ticket day
-int WorkTicket::GetTicketDay()
+int WorkTicket::GetTicketDay() const
 {
 	return ticketDay;
 }
 
 //Accessor method - returns the ticket month
-int WorkTicket::GetTicketMonth()
+int WorkTicket::GetTicketMonth() const
 {
 	return ticketMonth;
 }
 
 //Accessor method - returns the ticket year
-int WorkTicket::GetTicketYear()
+int WorkTicket::GetTicketYear() const
 {
 	return ticketYear;
 }
 
 //Accessor method - returns the issue description
-std::string WorkTicket::GetIssueDescription()
+std::string WorkTicket::GetIssueDescription() const
 {
 	return issueDescription;
 }
 
 std::ostream& operator<<(std::ostream& out, const WorkTicket& ticket)
 {
-	
+	//out << ticket.ShowWorkTicket();
+	return out;
 }
 
 std::istream& operator>>(std::istream& in, WorkTicket& ticket)
@@ -319,11 +327,15 @@ std::istream& operator>>(std::istream& in, WorkTicket& ticket)
 	return in;
 }
 
+//Equality Operator
 bool WorkTicket::operator==(const WorkTicket& other_ticket) const
 {
-
+	return ((GetTicketNumber() == other_ticket.GetTicketNumber()) && (GetClientID() == other_ticket.GetClientID())
+		&& GetTicketDay() == other_ticket.GetTicketDay() && GetTicketMonth() == other_ticket.GetTicketMonth()
+		&& GetTicketYear() == other_ticket.GetTicketYear() && GetIssueDescription() == other_ticket.GetIssueDescription());
 }
 
+//Assignment Operator
 WorkTicket WorkTicket::operator=(const WorkTicket& new_ticket)
 {
 	SetTicketNumber(new_ticket.GetTicketNumber());
@@ -332,4 +344,6 @@ WorkTicket WorkTicket::operator=(const WorkTicket& new_ticket)
 	SetTicketMonth(new_ticket.GetTicketMonth());
 	SetTicketYear(new_ticket.GetTicketYear());
 	SetIssueDescription(new_ticket.GetIssueDescription());
+	std::cout << "WorkTicket 3 object was assigned";
+	return *this;
 }
