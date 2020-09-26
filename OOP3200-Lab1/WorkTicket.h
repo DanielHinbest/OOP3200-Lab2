@@ -22,7 +22,7 @@ public:
 	//Default constructor. If parameters aren't declared, the ticket takes in these default parameters
 	WorkTicket(int ticketNumber = 0, std::string clientID = "", int ticketDay = 1, int ticketMonth = 1,
 		int ticketYear = 2000, std::string issueDescription = "");
-	
+
 	//Copy Constructor
 	WorkTicket(const WorkTicket& ticket2);
 

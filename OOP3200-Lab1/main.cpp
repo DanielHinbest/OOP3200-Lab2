@@ -20,6 +20,8 @@ int main()
 	WorkTicket workTicketArr[3];
 
 	std::cout << "\nA WorkTicket object has been copied.";
+	WorkTicket ticket2 = workTicketArr[1];
+	
 	//Endline
 	std::cout << std::endl;
 
