@@ -300,7 +300,7 @@ WorkTicket::operator std::string()
 
 
 //Overload << Operator
-//Displays all object's attritbutes
+//Displays all object's attributes
 std::ostream& operator<<(std::ostream& out, const WorkTicket& ticket)
 {
 	out << "\nWork Ticket Number: " << ticket.ticketNumber << std::endl
@@ -352,6 +352,7 @@ std::istream& operator>>(std::istream& in, WorkTicket& ticket)
 }
 
 //Equality Operator
+//Compares a ticket attributes with another ticket attributes
 bool WorkTicket::operator==(const WorkTicket& other_ticket) const
 {
 	return ((GetTicketNumber() == other_ticket.GetTicketNumber()) && (GetClientID() == other_ticket.GetClientID())
@@ -360,6 +361,7 @@ bool WorkTicket::operator==(const WorkTicket& other_ticket) const
 }
 
 //Assignment Operator
+//Assigns values to another ticket object
 WorkTicket WorkTicket::operator=(const WorkTicket& new_ticket)
 {
 	SetTicketNumber(new_ticket.GetTicketNumber());
