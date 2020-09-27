@@ -36,14 +36,14 @@ int main()
 		std::cout << "Description: " << workTicketArr[i].GetIssueDescription() << std::endl << std::endl;
 	}
 
-	//Copy Constructor is called
+	//Copy Constructor
 	WorkTicket workTicketNew = workTicketArr[0];
 
-	//Conversion Operator is called
+	//Conversion Operator
 	std::cout << workTicketNew.operator std::string() << "\n";
 	
 	//Equality Operator
-	std::cout << "Equality Operator: 0 meaning inequal, 1 meaning equal" << std::endl;
+	std::cout << "Equality Operator: 0 meaning not equal, 1 meaning equal" << std::endl;
 	std::cout << "WorkTicket 1 and WorkTicket 3: " << (workTicketArr[0] == workTicketArr[2]);
 
 	//Assignment Operator
@@ -51,8 +51,10 @@ int main()
 	std::cout << workTicketArr[2];
 
 	//Operator>> overload
+	//User enters in attributes
 	std::cin >> secondTicket;
 
 	//Operator<< overload
+	//Displays user input
 	std::cout << secondTicket;
 }

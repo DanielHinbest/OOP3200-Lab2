@@ -15,23 +15,6 @@ WorkTicket::WorkTicket(int number, std::string id, int day, int month, int year,
 	SetIssueDescription(description);
 }
 
-//Copy constructor
-WorkTicket::WorkTicket(const WorkTicket& ticket2)
-{
-	SetWorkTicket(ticket2.GetTicketNumber(), ticket2.GetClientID(), ticket2.GetTicketDay(), 
-		ticket2.GetTicketMonth(), ticket2.GetTicketYear(), ticket2.GetIssueDescription());
-	std::cout << "\nWorkTicket #1 object was copied\n";
-}
-
-//conversion operator
-WorkTicket::operator std::string()
-{
-	std::stringstream stringTicket;
-	stringTicket << "Work Ticket # " << GetTicketNumber() << " - " << GetClientID() << " (" << GetTicketDay() << "/" << GetTicketMonth() << "/" << GetTicketYear() << "): " << GetIssueDescription();
-	return stringTicket.str();
-}
-
-
 //Accessor to display the work ticket to the user
 void WorkTicket::ShowWorkTicket() const
 {
@@ -263,7 +246,6 @@ void WorkTicket::SetIssueDescription(std::string description)
 	}
 }
 
-
 //Accessor method - returns the ticket number
 int WorkTicket::GetTicketNumber() const
 {
@@ -300,7 +282,25 @@ std::string WorkTicket::GetIssueDescription() const
 	return issueDescription;
 }
 
+//Copy constructor
+WorkTicket::WorkTicket(const WorkTicket& ticket2)
+{
+	SetWorkTicket(ticket2.GetTicketNumber(), ticket2.GetClientID(), ticket2.GetTicketDay(), 
+		ticket2.GetTicketMonth(), ticket2.GetTicketYear(), ticket2.GetIssueDescription());
+	std::cout << "\nWorkTicket #1 object was copied\n";
+}
+
+//conversion operator
+WorkTicket::operator std::string()
+{
+	std::stringstream stringTicket;
+	stringTicket << "Work Ticket # " << GetTicketNumber() << " - " << GetClientID() << " (" << GetTicketDay() << "/" << GetTicketMonth() << "/" << GetTicketYear() << "): " << GetIssueDescription();
+	return stringTicket.str();
+}
+
+
 //Overload << Operator
+//Displays all object's attritbutes
 std::ostream& operator<<(std::ostream& out, const WorkTicket& ticket)
 {
 	out << "\nWork Ticket Number: " << ticket.ticketNumber << std::endl
@@ -311,34 +311,43 @@ std::ostream& operator<<(std::ostream& out, const WorkTicket& ticket)
 		<< "Issue Description: " << ticket.issueDescription;
 		return out;
 }
-
+// Overload >> Operator
+//Allows user to enter attributes of the WorkTicket
 std::istream& operator>>(std::istream& in, WorkTicket& ticket)
 {
+	//Ticket number input
 	std::cout << "\n\nEnter a ticket number: ";
 	in >> ticket.ticketNumber;
 	in.ignore();
 
+	//Client ID input
 	std::cout << "Enter a client ID: ";
 	in >> ticket.clientID;
 	in.ignore();
 
+	//Date input
 	std::cout << "Enter the date: " << std::endl;
+
+	//Day input
 	std::cout << "\t Day: ";
 	in >> ticket.ticketDay;
 	in.ignore();
 
+	//Month input
 	std::cout << "\tMonth: ";
 	in >> ticket.ticketMonth;
 	in.ignore();
 
+	//Year input
 	std::cout << "\tYear: ";
 	in >> ticket.ticketYear;
 	in.ignore();
 
+	//Description input
 	std::cout << "Enter the issue description: ";
 	in >> ticket.issueDescription;
 	in.ignore();
-
+		
 	return in;
 }
 
