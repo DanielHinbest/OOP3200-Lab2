@@ -30,7 +30,9 @@ public:
 	operator std::string();
 	
 	//Operator overloads
+	//Equality Operator
 	bool operator==(const WorkTicket& other_ticket) const;
+	//Assignment Operator
 	WorkTicket operator=(const WorkTicket& new_ticket);
 
 	//Friend overloads

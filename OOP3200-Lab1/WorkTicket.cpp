@@ -299,30 +299,46 @@ std::string WorkTicket::GetIssueDescription() const
 	return issueDescription;
 }
 
+//Overload << Operator
 std::ostream& operator<<(std::ostream& out, const WorkTicket& ticket)
 {
-	//out << ticket.ShowWorkTicket();
-	return out;
+	out << "Work Ticket Number: " << ticket.ticketNumber << std::endl
+		<< "Client ID: " << ticket.clientID << std::endl
+		<< "Day: " << ticket.ticketDay << std::endl
+		<< "Month: " << ticket.ticketMonth << std::endl
+		<< "Year: " << ticket.ticketYear << std::endl
+		<< "Issue Description: " << ticket.issueDescription;
+		return out;
 }
+
+
 
 std::istream& operator>>(std::istream& in, WorkTicket& ticket)
 {
+	std::cout << "Enter a ticket number: ";
 	in >> ticket.ticketNumber;
 	in.ignore();
 
+	std::cout << "Enter a client ID: ";
 	in >> ticket.clientID;
 	in.ignore();
 
+	std::cout << "Enter the date: ";
+	std::cout << "\t Day: ";
 	in >> ticket.ticketDay;
 	in.ignore();
 
+	std::cout << "\tMonth: ";
 	in >> ticket.ticketMonth;
 	in.ignore();
 
+	std::cout << "\tYear: ";
 	in >> ticket.ticketYear;
 	in.ignore();
 
+	std::cout << "Enter the issue description";
 	in >> ticket.issueDescription;
+	in.ignore();
 
 	return in;
 }
