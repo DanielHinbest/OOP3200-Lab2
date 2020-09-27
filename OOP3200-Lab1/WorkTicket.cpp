@@ -3,6 +3,7 @@
 #include "WorkTicket.h"
 #include "MyconsoleInput.h"
 //Constructor Definition
+
 WorkTicket::WorkTicket(int number, std::string id, int day, int month, int year, std::string description)
 {
 	//Assigning the parameters to attributes of the class
@@ -19,15 +20,15 @@ WorkTicket::WorkTicket(const WorkTicket& ticket2)
 {
 	SetWorkTicket(ticket2.GetTicketNumber(), ticket2.GetClientID(), ticket2.GetTicketDay(), 
 		ticket2.GetTicketMonth(), ticket2.GetTicketYear(), ticket2.GetIssueDescription());
+	std::cout << "\nWorkTicket #1 object was copied\n";
 }
 
 //conversion operator
 WorkTicket::operator std::string()
 {
-	std::stringstream convertedTicket;
-	convertedTicket << "Work Ticket # " << GetTicketNumber() << " - " << GetClientID() << " (" << GetTicketDay() <<
-		"/" << GetTicketMonth() << "/" << GetTicketYear() << "): " << GetIssueDescription();
-	return convertedTicket.str();
+	std::stringstream stringTicket;
+	stringTicket << "Work Ticket # " << GetTicketNumber() << " - " << GetClientID() << " (" << GetTicketDay() << "/" << GetTicketMonth() << "/" << GetTicketYear() << "): " << GetIssueDescription();
+	return stringTicket.str();
 }
 
 
@@ -302,7 +303,7 @@ std::string WorkTicket::GetIssueDescription() const
 //Overload << Operator
 std::ostream& operator<<(std::ostream& out, const WorkTicket& ticket)
 {
-	out << "Work Ticket Number: " << ticket.ticketNumber << std::endl
+	out << "\nWork Ticket Number: " << ticket.ticketNumber << std::endl
 		<< "Client ID: " << ticket.clientID << std::endl
 		<< "Day: " << ticket.ticketDay << std::endl
 		<< "Month: " << ticket.ticketMonth << std::endl
@@ -311,11 +312,9 @@ std::ostream& operator<<(std::ostream& out, const WorkTicket& ticket)
 		return out;
 }
 
-
-
 std::istream& operator>>(std::istream& in, WorkTicket& ticket)
 {
-	std::cout << "Enter a ticket number: ";
+	std::cout << "\n\nEnter a ticket number: ";
 	in >> ticket.ticketNumber;
 	in.ignore();
 
@@ -323,7 +322,7 @@ std::istream& operator>>(std::istream& in, WorkTicket& ticket)
 	in >> ticket.clientID;
 	in.ignore();
 
-	std::cout << "Enter the date: ";
+	std::cout << "Enter the date: " << std::endl;
 	std::cout << "\t Day: ";
 	in >> ticket.ticketDay;
 	in.ignore();
@@ -336,7 +335,7 @@ std::istream& operator>>(std::istream& in, WorkTicket& ticket)
 	in >> ticket.ticketYear;
 	in.ignore();
 
-	std::cout << "Enter the issue description";
+	std::cout << "Enter the issue description: ";
 	in >> ticket.issueDescription;
 	in.ignore();
 

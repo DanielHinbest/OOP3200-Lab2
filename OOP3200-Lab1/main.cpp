@@ -19,8 +19,8 @@ int main()
 	//Array declaration for WorkTicket class
 	WorkTicket workTicketArr[3];
 
-	std::cout << "\nA WorkTicket object has been copied.";
-	WorkTicket ticket2 = workTicketArr[1];
+	//WorkTicket object for operator overload
+	WorkTicket secondTicket;
 	
 	//Endline
 	std::cout << std::endl;
@@ -35,4 +35,24 @@ int main()
 			<< " / " << workTicketArr[i].GetTicketYear() << std::endl;
 		std::cout << "Description: " << workTicketArr[i].GetIssueDescription() << std::endl << std::endl;
 	}
+
+	//Copy Constructor is called
+	WorkTicket workTicketNew = workTicketArr[0];
+
+	//Conversion Operator is called
+	std::cout << workTicketNew.operator std::string() << "\n";
+	
+	//Equality Operator
+	std::cout << "Equality Operator: 0 meaning inequal, 1 meaning equal" << std::endl;
+	std::cout << "WorkTicket 1 and WorkTicket 3: " << (workTicketArr[0] == workTicketArr[2]);
+
+	//Assignment Operator
+	workTicketNew = workTicketArr[2];
+	std::cout << workTicketArr[2];
+
+	//Operator>> overload
+	std::cin >> secondTicket;
+
+	//Operator<< overload
+	std::cout << secondTicket;
 }
